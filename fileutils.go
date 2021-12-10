@@ -17,10 +17,10 @@ func openSourceFile(filename string) (io.ReadCloser, error) {
 }
 
 func chooseRendererBaseOnOutfile(filename string) (Renderer, error) {
-	ext := filepath.Ext(filename)
-	if ext == ".png" {
+	switch filepath.Ext(filename) {
+	case ".png":
 		return PngRenderer, nil
-	} else if ext == ".svg" {
+	case ".svg":
 		return SvgRenderer, nil
 	}
 
