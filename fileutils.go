@@ -11,9 +11,9 @@ import (
 func openSourceFile(filename string) (io.ReadCloser, error) {
 	if (filename == "") || (filename == "-") {
 		return ioutil.NopCloser(os.Stdin), nil
-	} else {
-		return os.Open(filename)
 	}
+
+	return os.Open(filename)
 }
 
 func chooseRendererBaseOnOutfile(filename string) (Renderer, error) {
