@@ -8,14 +8,6 @@ import (
 	"path/filepath"
 )
 
-func openTargetFile(filename string) (io.WriteCloser, error) {
-	if filename == "" {
-		return nopWriteCloser{os.Stdout}, nil
-	} else {
-		return os.Create(filename)
-	}
-}
-
 func openSourceFile(filename string) (io.ReadCloser, error) {
 	if (filename == "") || (filename == "-") {
 		return ioutil.NopCloser(os.Stdin), nil
