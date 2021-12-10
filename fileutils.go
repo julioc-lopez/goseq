@@ -26,9 +26,3 @@ func chooseRendererBaseOnOutfile(filename string) (Renderer, error) {
 
 	return nil, errors.New("Unsupported extension: " + filename)
 }
-
-type nopWriteCloser struct {
-	io.Writer
-}
-
-func (nopWriteCloser) Close() error { return nil }
