@@ -56,7 +56,7 @@ _EOF_
         echo "<table><tr><td><pre>"
         cat $inFile
         echo "</pre></td><td>"
-        cat $outFile | grep -v '^<.xml'
+        grep -v '^<.xml' "$outFile"
         echo "</td></tr></table>"
     done
 
