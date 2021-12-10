@@ -24,7 +24,7 @@ function runTest()
     local inFile="$1"
     local outFile="$2"
 
-    $TEST_BIN $GOSEQ_OPTS $inFile > $outFile
+    "$TEST_BIN" $GOSEQ_OPTS "$inFile" > "$outFile"
     echo "$inFile $outFile"
 }
 
@@ -54,7 +54,7 @@ _EOF_
     while read inFile outFile; do
         echo "<p>${inFile}</p>"
         echo "<table><tr><td><pre>"
-        cat $inFile
+        cat "$inFile"
         echo "</pre></td><td>"
         grep -v '^<.xml' "$outFile"
         echo "</td></tr></table>"
