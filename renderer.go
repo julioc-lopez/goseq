@@ -11,17 +11,18 @@ import (
 // (which is up to the renderer).
 type Renderer func(diagram *seqdiagram.Diagram, opts *seqdiagram.ImageOptions, target string) error
 
-// The default renderer: write the diagram to SVG
+// SvgRenderer is the default renderer to write the diagram to SVG.
 func SvgRenderer(diagram *seqdiagram.Diagram, opts *seqdiagram.ImageOptions, target string) error {
-	if target != "" {
-		file, err := os.Create(target)
-		if err != nil {
-			return err
-		}
-		defer file.Close()
-
-		return diagram.WriteSVGWithOptions(file, opts)
-	} else {
+	if target == "" {
 		return diagram.WriteSVGWithOptions(os.Stdout, opts)
 	}
+
+	file, err := os.Create(target)
+	if err != nil {
+		return err
+	}
+
+	defer file.Close()
+
+	return diagram.WriteSVGWithOptions(file, opts)
 }
