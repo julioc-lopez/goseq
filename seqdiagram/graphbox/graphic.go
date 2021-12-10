@@ -50,9 +50,9 @@ func (g *Graphic) Rows() int {
 func (g *Graphic) Cols() int {
 	if len(g.matrix) > 0 {
 		return len(g.matrix[0]) - 1
-	} else {
-		return 0
 	}
+
+	return 0
 }
 
 // Resize the matrix
