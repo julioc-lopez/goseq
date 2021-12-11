@@ -16,12 +16,12 @@ function die()
 
 function genTest()
 {
-    for n in `seq 1 $N`; do        
-        fr="p$((RANDOM % $P))"
-        tr="p$((RANDOM % $P))"
+    for n in $(seq 1 $N); do
+        fr=p$((RANDOM % $P))
+        tr=p$((RANDOM % $P))
         while [ "$fr" = "$tr" ]; do
-            fr="p$((RANDOM % $P))"
-            tr="p$((RANDOM % $P))"
+            fr=p$((RANDOM % $P))
+            tr=p$((RANDOM % $P))
         done
 
         echo "$fr->$tr: Line $n"
