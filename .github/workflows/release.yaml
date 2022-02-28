@@ -23,7 +23,7 @@ jobs:
           go generate ./...
           go build .
       - name: Release
-        uses: goreleaser/goreleaser-action@v2.8.0
+        uses: goreleaser/goreleaser-action@v2.9.0
         if: startsWith(github.ref, 'refs/tags/')
         with:
           version: latest
