@@ -24,7 +24,7 @@ function runTest()
     local inFile="$1"
     local outFile="$2"
 
-    $TEST_BIN $GOSEQ_OPTS "$inFile" > "$outFile"
+    "$TEST_BIN" $GOSEQ_OPTS "$inFile" > "$outFile"
     echo "$inFile $outFile"
 }
 

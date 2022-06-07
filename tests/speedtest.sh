@@ -17,11 +17,11 @@ function die()
 function genTest()
 {
     for n in $(seq 1 $N); do
-        fr=p$((RANDOM % $P))
-        tr=p$((RANDOM % $P))
+        fr=p$((RANDOM % P))
+        tr=p$((RANDOM % P))
         while [ "$fr" = "$tr" ]; do
-            fr=p$((RANDOM % $P))
-            tr=p$((RANDOM % $P))
+            fr=p$((RANDOM % P))
+            tr=p$((RANDOM % P))
         done
 
         echo "$fr->$tr: Line $n"
@@ -29,6 +29,6 @@ function genTest()
 }
 
 go build -o $TEST_BIN ../. || die "Failed to build goseq"
-trap "rm $TEST_BIN" 0
+trap 'rm "$TEST_BIN"' 0
 
 genTest | time $TEST_BIN > /dev/null
