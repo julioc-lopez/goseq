@@ -27,9 +27,7 @@ jobs:
           go generate ./...
           go build .
       - name: Test
-        run: |
-          cd tests
-          ./runtests.sh
+        run: go test ./...
       - name: Upload test artifacts
         uses: actions/upload-artifact@v3
         with:
