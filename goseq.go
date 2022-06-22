@@ -134,11 +134,13 @@ func watchAndProcess(inFiles []string, outFile string, renderer Renderer) error 
 
 	for event := range watcher.Event {
 		if event.IsModify() {
-			if err := processFile(event.Name, outFile, renderer); err == nil {
-				log.Println("Generating", event.Name, "->", outFile)
-			} else {
+			if err := processFile(event.Name, outFile, renderer); err != nil {
 				log.Println(event.Name, "-", err.Error())
+
+				continue
 			}
+
+			log.Println("Generating", event.Name, "->", outFile)
 		}
 	}
 
