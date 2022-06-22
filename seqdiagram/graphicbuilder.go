@@ -238,7 +238,7 @@ func getInnerRanksRecursive(subItems []SequenceItem) []int {
 	for _, subItem := range subItems {
 		if action, isAction := subItem.(*Action); isAction {
 			if action.From.rank == action.To.rank {
-				ranks = append(ranks, action.From.rank, action.To.rank + 1)
+				ranks = append(ranks, action.From.rank, action.To.rank+1)
 			} else {
 				ranks = append(ranks, action.From.rank, action.To.rank)
 			}
