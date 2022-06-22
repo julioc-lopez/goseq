@@ -62,7 +62,7 @@ func (gb *graphicBuilder) buildGraphic() *graphbox.Graphic {
 	gb.addActors()
 
 	if len(gb.Diagram.Items) == 0 {
-		gb.Graphic.Put(2, 0, &graphbox.Spacer{graphbox.Point{0, 64}})
+		gb.Graphic.Put(2, 0, &graphbox.Spacer{Margin: graphbox.Point{X: 0, Y: 64}})
 	} else {
 		row := 2
 		gb.putItemsInSlice(&row, 0, gb.Diagram.Items)
@@ -169,7 +169,7 @@ func (gb *graphicBuilder) putMultiActorOverNote(row int, leftActor *Actor, right
 		FontSize:    gb.Style.NoteBox.FontSize,
 		Padding:     gb.Style.NoteBox.Padding,
 		Margin:      gb.Style.NoteBox.Margin,
-		TextPadding: graphbox.Point{0, 0},
+		TextPadding: graphbox.Point{X: 0, Y: 0},
 		Shape:       graphbox.DSFramedRect,
 		Overlap:     gb.Style.MultiNoteOverlap,
 	}

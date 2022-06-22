@@ -49,5 +49,5 @@ var builtinIcons = map[string]ActorIcon{
 		Length:             40,
 		Horizontal:         true,
 	}},
-	"cloud": &builtinActorIcon{graphbox.PathIcon{graphbox.CloudPathData}},
+	"cloud": &builtinActorIcon{graphbox.PathIcon{Data: graphbox.CloudPathData}},
 }
