@@ -132,18 +132,17 @@ func watchAndProcess(inFiles []string, outFile string, renderer Renderer) error 
 		watcher.Watch(inFile)
 	}
 
-	for {
-		select {
-		case event := <-watcher.Event:
-			if event.IsModify() {
-				if err := processFile(event.Name, outFile, renderer); err == nil {
-					log.Println("Generating", event.Name, "->", outFile)
-				} else {
-					log.Println(event.Name, "-", err.Error())
-				}
+	for event := range watcher.Event {
+		if event.IsModify() {
+			if err := processFile(event.Name, outFile, renderer); err == nil {
+				log.Println("Generating", event.Name, "->", outFile)
+			} else {
+				log.Println(event.Name, "-", err.Error())
 			}
 		}
 	}
+
+	return nil
 }
 
 func main() {
