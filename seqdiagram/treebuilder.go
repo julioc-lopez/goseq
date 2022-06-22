@@ -206,10 +206,10 @@ func (tb *treeBuilder) getOrAddActor(ar parse.ActorRef, d *Diagram) (*Actor, err
 		case "right":
 			return RightOffsideActor, nil
 		default:
-			return nil, fmt.Errorf("Invalid pseudo actor: %s", pn)
+			return nil, fmt.Errorf("invalid pseudo actor: %s", pn)
 		}
 	default:
-		return nil, fmt.Errorf("Unknown actor reference: %#v", a)
+		return nil, fmt.Errorf("unknown actor reference: %#v", a)
 	}
 }
 

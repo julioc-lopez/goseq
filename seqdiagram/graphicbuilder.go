@@ -24,7 +24,7 @@ var graphboxArrowStemMapping = map[ArrowStem]graphbox.ActivityArrowStem{
 func mustLoadFont() *graphbox.TTFFont {
 	font, err := loadInternalFont(dejaVuSansFont)
 	if err != nil {
-		panic(errors.New("Could not load internal font: " + dejaVuSansFont))
+		panic(errors.New("could not load internal font: " + dejaVuSansFont))
 	}
 
 	return font
