@@ -49,7 +49,6 @@ var segmentTypeMap = map[parse.SegmentType]SegmentType{
 
 // styleIdentifierParticipant is the style identifier for participants
 const styleIdentifierParticipant = "participant"
-const styleIdentifierBlock = "block"
 
 type treeBuilder struct {
 	nodeList *parse.NodeList
