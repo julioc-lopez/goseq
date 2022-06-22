@@ -22,9 +22,8 @@ type ActivityLineStyle struct {
 	TextGap       int
 	SelfRefWidth  int
 	SelfRefHeight int
-	//ArrowHead       ActivityArrowHead
-	ArrowHead *ArrowHeadStyle
-	ArrowStem ActivityArrowStem
+	ArrowHead     *ArrowHeadStyle
+	ArrowStem     ActivityArrowStem
 }
 
 // ActivityLine is an activity line graphical object
@@ -93,7 +92,6 @@ func (al *ActivityLine) Draw(ctx DrawContext, point Point) {
 			al.drawArrow(ctx, fx, stemY, false)
 		}
 	} else {
-
 		if point, isPoint := ctx.PointAt(ctx.R, al.TC); isPoint {
 			tx, ty := point.X, point.Y
 
@@ -131,7 +129,6 @@ func (al *ActivityLine) drawArrowStemPath(ctx DrawContext, xs, ys []int) {
 }
 
 func (al *ActivityLine) renderMessage(ctx DrawContext, tx, ty int, anchorLeft bool) {
-	//rect, textPoint := MeasureFontRect(al.style.Font, al.style.FontSize, al.Text, tx, ty, SouthGravity)
 	anchor := SouthGravity
 	if anchorLeft {
 		anchor = SouthWestGravity

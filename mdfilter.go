@@ -1,7 +1,6 @@
 package main
 
 import (
-	//    "log"
 	"bufio"
 	"bytes"
 	"fmt"
@@ -47,8 +46,6 @@ func (cb *MarkdownFilter) Scan() error {
 		} else {
 			fmt.Fprintln(cb.output, line)
 		}
-
-		//log.Println(inblock, line)
 	}
 
 	if inblock {

@@ -37,7 +37,6 @@ type Constraint interface {
 }
 
 type ConstraintChanger interface {
-
 	// Number of columns in constraint changer
 	Cols() int
 

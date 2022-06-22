@@ -24,7 +24,6 @@ func NewDiagram() *Diagram {
 
 // Parses a diagram from a reader and returns the diagram or an error
 func ParseDiagram(r io.Reader, filename string) (*Diagram, error) {
-	//d := NewDiagram()
 	nl, err := parse.Parse(r, filename)
 	if err != nil {
 		return nil, err

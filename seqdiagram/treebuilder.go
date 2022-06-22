@@ -111,7 +111,7 @@ func (tb *treeBuilder) toSequenceItem(node parse.Node, d *Diagram) (SequenceItem
 		d.Title = n.Title
 		return nil, nil
 	case *parse.ActorNode:
-		err := tb.addActor(n, d) // d.GetOrAddActorWithOptions(n.Ident, n.ActorName())
+		err := tb.addActor(n, d)
 		return nil, err
 	case *parse.ActionNode:
 		return tb.addAction(n, d)

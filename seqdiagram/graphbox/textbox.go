@@ -70,7 +70,6 @@ func (tb *TextBox) measureLine(line string) (int, int) {
 // fill the rectangle with default anchoring and alignment
 func (tb *TextBox) BoundingRect() Rect {
 	w, h := tb.Measure()
-	//ox, oy := gravity(w, h)
 
 	return Rect{0, 0, w, h}
 }

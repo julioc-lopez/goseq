@@ -13,7 +13,6 @@ type ActorIconBoxStyle struct {
 
 // ActorIconBox represents an actor icon
 type ActorIconBox struct {
-	//Caption     string
 	textBox *TextBox
 	Icon    Icon
 	style   ActorIconBoxStyle

@@ -108,11 +108,11 @@ func (g *Graphic) repositionGridPoints() (int, int) {
 			g.matrix[r][c].Point.X = px
 			g.matrix[r][c].Point.Y = py
 		}
-		//px += g.matrix[r][len(row) - 1].Delta.X + g.Margin.X
+
 		px += g.Margin.X
 		maxX = maxInt(px, maxX)
 	}
-	//py += g.matrix[len(g.matrix) - 1][0].Delta.Y + g.Margin.Y
+
 	py += g.Margin.Y
 
 	return maxX, py
@@ -170,7 +170,6 @@ func (g *Graphic) propogateDeltas() {
 // returns false.
 func (g *Graphic) Put(r, c int, item GraphboxItem) bool {
 	if (r >= 0) && (c >= 0) && (r < len(g.matrix)) && (c < len(g.matrix[r])) {
-		//g.matrix[r][c].Item = item
 		g.items = append(g.items, itemInstance{r, c, item})
 		return true
 	} else {
