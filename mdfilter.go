@@ -36,7 +36,9 @@ func (cb *MarkdownFilter) Scan() error {
 			currentIndent = indent
 		} else if (inblock) && (indent <= currentIndent-4) && (trimmedLine != "") {
 			inblock = false
-			cb.handler(blockcontent.String(), cb.output)
+			if err := cb.handler(blockcontent.String(), cb.output); err != nil {
+				return err
+			}
 			blockcontent.Reset()
 			currentIndent = indent
 		}
@@ -49,7 +51,9 @@ func (cb *MarkdownFilter) Scan() error {
 	}
 
 	if inblock {
-		cb.handler(blockcontent.String(), cb.output)
+		if err := cb.handler(blockcontent.String(), cb.output); err != nil {
+			return err
+		}
 	}
 
 	return scanner.Err()

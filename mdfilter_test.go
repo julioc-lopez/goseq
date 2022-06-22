@@ -25,7 +25,7 @@ This is normal markdown
 This is normal markdown again
 `
 
-	blocks, actual := runFilter(md)
+	blocks, actual := runFilter(t, md)
 
 	assert.Equal("["+actual+"]", "["+expMd+"]")
 	assert.Equal(len(blocks), 1)
@@ -65,7 +65,7 @@ asdasdasdasdasdasdasd
 
 `
 
-	blocks, actual := runFilter(md)
+	blocks, actual := runFilter(t, md)
 
 	assert.Equal("["+actual+"]", "["+expMd+"]")
 	assert.Equal(len(blocks), 2)
@@ -73,13 +73,18 @@ asdasdasdasdasdasdasd
 	assert.Equal(blocks[1], "    #!goseq\n    Seq diagram again\n")
 }
 
-func runFilter(input string) (blocks []string, output string) {
+func runFilter(tb testing.TB, input string) (blocks []string, output string) {
+	tb.Helper()
+
 	bufout := new(bytes.Buffer)
 	mf := &MarkdownFilter{strings.NewReader(input), bufout, func(codeblock string, output io.Writer) error {
 		blocks = append(blocks, codeblock)
 		return nil
 	}}
-	mf.Scan()
+
+	if err := mf.Scan(); err != nil {
+		tb.Fatal("Scan():", err)
+	}
 
 	output = bufout.String()
 	return

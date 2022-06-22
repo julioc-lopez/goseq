@@ -129,7 +129,9 @@ func watchAndProcess(inFiles []string, outFile string, renderer Renderer) error 
 	}
 
 	for _, inFile := range inFiles {
-		watcher.Watch(inFile)
+		if err := watcher.Watch(inFile); err != nil {
+			log.Printf("Could not set notify watch on %s: %v", inFile, err)
+		}
 	}
 
 	for event := range watcher.Event {
@@ -172,7 +174,9 @@ func main() {
 		}
 	} else {
 		if *flagWatch {
-			watchAndProcess(flag.Args(), outFile, renderer)
+			if err := watchAndProcess(flag.Args(), outFile, renderer); err != nil {
+				log.Fatal("Could not watch and process:", err)
+			}
 		} else {
 			for _, inFile := range flag.Args() {
 				err := processFile(inFile, outFile, renderer)
