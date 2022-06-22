@@ -13,7 +13,7 @@ type ActorIcon interface {
 }
 
 // Error returned if the icon cannot be found
-var EIconNotFound = errors.New("icon not found")
+var ErrIconNotFound = errors.New("icon not found")
 
 // Lookup an actor icon based on it's name.  If the actor icon cannot be
 // found, an EIconNotFound error is returned
@@ -23,7 +23,7 @@ func LookupActorIcon(name string) (ActorIcon, error) {
 		return builtinIcon, nil
 	}
 
-	return nil, EIconNotFound
+	return nil, ErrIconNotFound
 }
 
 // A build-in actor icon
