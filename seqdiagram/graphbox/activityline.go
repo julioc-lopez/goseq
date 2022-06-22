@@ -1,9 +1,5 @@
 package graphbox
 
-import (
-	"fmt"
-)
-
 // ActivityArrowStem is the type of arrow stem to use for activity arrows
 type ActivityArrowStem int
 
@@ -29,16 +25,6 @@ type ActivityLineStyle struct {
 	//ArrowHead       ActivityArrowHead
 	ArrowHead *ArrowHeadStyle
 	ArrowStem ActivityArrowStem
-}
-
-// Returns the text style
-func (as ActivityLineStyle) textStyle() string {
-	s := SvgStyle{}
-
-	s.Set("font-family", as.Font.SvgName())
-	s.Set("font-size", fmt.Sprintf("%dpx", as.FontSize))
-
-	return s.ToStyle()
 }
 
 // ActivityLine is an activity line graphical object
