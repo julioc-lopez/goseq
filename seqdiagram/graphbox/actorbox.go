@@ -59,15 +59,16 @@ func (tr *ActorBox) Constraint(r, c int, applier ConstraintApplier) {
 	}
 
 	if posVert == TopActorBox {
-		if posHoriz == LeftActorBox {
+		switch posHoriz {
+		case LeftActorBox:
 			applier.Apply(vertConstraint)
 			applier.Apply(SizeConstraint{r, c, tr.frameRect.W / 2, 0, 0, 0})
 			applier.Apply(AddSizeConstraint{r, c, 0, tr.frameRect.W/2 + tr.style.Margin.X, 0, 0})
-		} else if posHoriz == RightActorBox {
+		case RightActorBox:
 			applier.Apply(vertConstraint)
 			applier.Apply(SizeConstraint{r, c, 0, tr.frameRect.W / 2, 0, 0})
 			applier.Apply(AddSizeConstraint{r, c, tr.frameRect.W/2 + tr.style.Margin.X, 0, 0, 0})
-		} else {
+		default:
 			applier.Apply(vertConstraint)
 			applier.Apply(AddSizeConstraint{r, c, tr.frameRect.W/2 + tr.style.Margin.X, tr.frameRect.W/2 + tr.style.Margin.X, 0, 0})
 		}

@@ -42,11 +42,13 @@ func (tr *NoteBox) Constraint(r, c int, applier ConstraintApplier) {
 
 	marginX := tr.style.Margin.X
 	marginY := tr.style.Margin.Y
-	if tr.pos == LeftNotePos {
+
+	switch tr.pos {
+	case LeftNotePos:
 		horizConstraint = SizeConstraint{r, c, tr.frameRect.W + marginX*2, marginX, 0, 0}
-	} else if tr.pos == RightNotePos {
+	case RightNotePos:
 		horizConstraint = SizeConstraint{r, c, marginX, tr.frameRect.W + marginX*2, 0, 0}
-	} else {
+	default:
 		horizConstraint = SizeConstraint{r, c, tr.frameRect.W/2 + marginX, tr.frameRect.W/2 + marginX, 0, 0}
 	}
 
@@ -58,17 +60,18 @@ func (r *NoteBox) Draw(ctx DrawContext, point Point) {
 	centerX, centerY := point.X, point.Y
 	marginX := r.style.Margin.X
 
-	if r.pos == CenterNotePos {
+	switch r.pos {
+	case CenterNotePos:
 		rect := r.frameRect.PositionAt(centerX, centerY, CenterGravity)
 		ctx.Canvas.Rect(rect.X, rect.Y, rect.W, rect.H, "stroke:black;fill:white;stroke-width:2px;")
 		r.textBox.Render(ctx.Canvas, centerX, centerY, CenterGravity)
-	} else if r.pos == LeftNotePos {
+	case LeftNotePos:
 		offsetX := centerX - marginX
 		textOffsetX := centerX - r.style.Padding.X - marginX
 		rect := r.frameRect.PositionAt(offsetX, centerY, EastGravity)
 		ctx.Canvas.Rect(rect.X, rect.Y, rect.W, rect.H, "stroke:black;fill:white;stroke-width:2px;")
 		r.textBox.Render(ctx.Canvas, textOffsetX, centerY, EastGravity)
-	} else if r.pos == RightNotePos {
+	case RightNotePos:
 		offsetX := centerX + marginX
 		textOffsetX := centerX + r.style.Padding.X + marginX
 		rect := r.frameRect.PositionAt(offsetX, centerY, WestGravity)

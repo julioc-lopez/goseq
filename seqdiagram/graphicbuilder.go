@@ -149,11 +149,12 @@ func (gb *graphicBuilder) putNote(row int, note *Note) {
 func (gb *graphicBuilder) putSingleActorNote(row int, actor *Actor, note *Note) {
 	var pos graphbox.NoteBoxPos
 
-	if note.Align == LeftNoteAlignment {
+	switch note.Align {
+	case LeftNoteAlignment:
 		pos = graphbox.LeftNotePos
-	} else if note.Align == OverNoteAlignment {
+	case OverNoteAlignment:
 		pos = graphbox.CenterNotePos
-	} else if note.Align == RightNoteAlignment {
+	case RightNoteAlignment:
 		pos = graphbox.RightNotePos
 	}
 
@@ -395,11 +396,12 @@ func (gb *graphicBuilder) addActors() {
 	for rank, actor := range gb.Diagram.Actors {
 		var actorBoxPos graphbox.ActorBoxPos
 
-		if rank == 0 {
+		switch rank {
+		case 0:
 			actorBoxPos = graphbox.LeftActorBox
-		} else if rank == len(gb.Diagram.Actors)-1 {
+		case len(gb.Diagram.Actors) - 1:
 			actorBoxPos = graphbox.RightActorBox
-		} else {
+		default:
 			actorBoxPos = graphbox.MiddleActorBox
 		}
 
@@ -444,11 +446,12 @@ func (gb *graphicBuilder) addActors() {
 
 // Returns the column position of an actor
 func (gb *graphicBuilder) colOfActor(actor *Actor) int {
-	if actor == LeftOffsideActor {
+	switch actor {
+	case LeftOffsideActor:
 		return 0
-	} else if actor == RightOffsideActor {
+	case RightOffsideActor:
 		return gb.Graphic.Cols() - 1
-	} else {
+	default:
 		return gb.actorInfos[actor.rank].Col
 	}
 }

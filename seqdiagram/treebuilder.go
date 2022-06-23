@@ -272,11 +272,13 @@ type AttributeSet struct {
 func (as *AttributeSet) Get(name string) (value string, hasValue bool) {
 	if value, hasValue = as.Attrs[name]; hasValue {
 		return value, true
-	} else if as.Parent != nil {
-		return as.Parent.Get(name)
-	} else {
-		return "", false
 	}
+
+	if as.Parent != nil {
+		return as.Parent.Get(name)
+	}
+
+	return "", false
 }
 
 // Get an attribute value or a default if it is not defined

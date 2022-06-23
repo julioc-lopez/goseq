@@ -40,13 +40,14 @@ func (tr *ActorIconBox) Constraint(r, c int, applier ConstraintApplier) {
 	marginX := tr.style.Margin.X
 
 	if posVert == TopActorBox {
-		if posHoriz == LeftActorBox {
+		switch posHoriz {
+		case LeftActorBox:
 			applier.Apply(SizeConstraint{r, c, w / 2, marginX / 2, 0, 0})
 			applier.Apply(AddSizeConstraint{r, c, 0, w / 2, 0, 0})
-		} else if posHoriz == RightActorBox {
+		case RightActorBox:
 			applier.Apply(SizeConstraint{r, c, marginX / 2, w / 2, 0, 0})
 			applier.Apply(AddSizeConstraint{r, c, w / 2, 0, 0, 0})
-		} else {
+		default:
 			applier.Apply(SizeConstraint{r, c, marginX / 2, marginX / 2, 0, 0})
 			applier.Apply(AddSizeConstraint{r, c, w / 2, w / 2, 0, 0})
 		}
