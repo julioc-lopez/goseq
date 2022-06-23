@@ -1,0 +1,129 @@
+run:
+  timeout: 3m
+  modules-download-mode: readonly
+
+linters:
+  enable-all: true
+  # Disable specific linter
+  # https://golangci-lint.run/usage/linters/#disabled-by-default-linters--e--enable
+  disable:
+    - bodyclose
+    - containedctx
+    - contextcheck
+    - cyclop
+    - decorder
+    - depguard
+    - dogsled
+    - dupl
+    - durationcheck
+    - errcheck
+    - errchkjson
+    - errname
+    - errorlint
+    - execinquery
+    - exhaustive
+    - exhaustivestruct
+    - exhaustruct
+    - exportloopref
+    - forbidigo
+    - forcetypeassert
+    - funlen
+    - gci
+    - gochecknoglobals
+    - gochecknoinits
+    - gocognit
+    - goconst
+    # - gocritic
+    - gocyclo
+    - godot
+    - godox
+    - goerr113
+    - gofumpt
+    - goheader
+    - goimports
+    - golint
+    - gomnd
+    - gomoddirectives
+    - gomodguard
+    - goprintffuncname
+    - gosec
+    - grouper
+    - ifshort
+    - importas
+    - interfacer
+    - ireturn
+    - lll
+    - maintidx
+    - makezero
+    - maligned
+    - misspell
+    - nakedret
+    - nestif
+    - nilerr
+    - nilnil
+    - nlreturn
+    - noctx
+    - nolintlint
+    - nonamedreturns
+    - nosprintfhostport
+    - paralleltest
+    - prealloc
+    - predeclared
+    - promlinter
+    - revive
+    - rowserrcheck
+    - scopelint
+    - sqlclosecheck
+    - structcheck # disabled, see https://github.com/golangci/golangci-lint/issues/2649
+    - stylecheck
+    - tagliatelle
+    - tenv
+    - testpackage
+    - thelper
+    - tparallel
+    - unconvert
+    - unparam
+    - varcheck
+    - varnamelen
+    - wastedassign
+    - whitespace
+    - wrapcheck
+    - wsl
+
+linters-settings:
+  gocritic:
+    settings:
+      hugeParam:
+        # size in bytes that makes the warning trigger (default 80)
+        sizeThreshold: 120
+    enabled-tags:
+      - diagnostic
+      - performance
+      - style
+      - opinionated
+      - experimental
+    disabled-checks:
+      - wrapperFunc
+      # - whyNoLint
+  govet:
+    # Report about shadowed variables.
+    # Default: false
+    check-shadowing: true
+    # settings:
+    #   shadow:
+    #     # Whether to be strict about shadowing; can be noisy.
+    #     strict: true
+    enable-all: true
+    disable:
+    - fieldalignment
+  varcheck:
+    # Check usage of exported fields and variables.
+    exported-fields: true
+
+issues:
+  exclude-use-default: false
+  exclude-rules:
+    - path: _test\.go
+      text: "importShadow: shadow of imported from 'github.com/seanpont/assert' package 'assert'"
+      linters:
+      - gocritic
