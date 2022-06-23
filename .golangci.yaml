@@ -92,7 +92,6 @@ linters:
     - tparallel
     - unconvert
     - unparam
-    - varcheck
     - varnamelen
     - wastedassign
     - wrapcheck
@@ -124,9 +123,6 @@ linters-settings:
     enable-all: true
     disable:
     - fieldalignment
-  varcheck:
-    # Check usage of exported fields and variables.
-    exported-fields: true
 
 issues:
   exclude-use-default: false
