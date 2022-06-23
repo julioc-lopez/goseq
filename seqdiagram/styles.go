@@ -354,8 +354,15 @@ var SmallStyle = &DiagramStyles{
 	},
 }
 
-var StyleNames = map[string]*DiagramStyles{
-	"default": DefaultStyle,
-	"tight":   TightStyle,
-	"small":   SmallStyle,
+func StyleByName(name string) *DiagramStyles {
+	switch name {
+	case "tight":
+		return TightStyle
+	case "small":
+		return SmallStyle
+	case "default":
+		return DefaultStyle
+	default:
+		return DefaultStyle
+	}
 }

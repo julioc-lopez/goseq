@@ -33,14 +33,8 @@ func die(msg string) {
 
 // Construct and build image options based on the current configuration
 func buildImageOptions() *seqdiagram.ImageOptions {
-	// Work out the style
-	style := seqdiagram.DefaultStyle
-	if altStyle, hasStyle := seqdiagram.StyleNames[*flagStyle]; hasStyle {
-		style = altStyle
-	}
-
 	return &seqdiagram.ImageOptions{
-		Style:    style,
+		Style:    seqdiagram.StyleByName(*flagStyle),
 		Embedded: *flagEmbedded,
 	}
 }
