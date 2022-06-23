@@ -1,7 +1,8 @@
 // Renderers disabled if noim is specified
 //
 
-//+build !im
+//go:build !im
+// +build !im
 
 package main
 
