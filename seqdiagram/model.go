@@ -167,8 +167,7 @@ const (
 )
 
 // A sequence item
-type SequenceItem interface {
-}
+type SequenceItem interface{}
 
 // Defines a note
 type Note struct {
@@ -278,11 +277,11 @@ const (
 
 // A segment within a block
 type BlockSegment struct {
-	Type     SegmentType
-	Prefix   string
-	Message  string
+	Type      SegmentType
+	Prefix    string
+	Message   string
 	FullWidth bool
-	SubItems []SequenceItem
+	SubItems  []SequenceItem
 }
 
 // Returns the number of nested blocks

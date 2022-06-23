@@ -45,8 +45,7 @@ type NodeList struct {
 }
 
 // A type of declaration node
-type Node interface {
-}
+type Node interface{}
 
 // A processing instruction node
 type ProcessInstructionNode struct {
@@ -91,8 +90,7 @@ func (an *ActorNode) ActorName() string {
 }
 
 // A reference to an actor
-type ActorRef interface {
-}
+type ActorRef interface{}
 
 // A reference to a normal actor
 type NormalActorRef string
@@ -151,11 +149,11 @@ type BlockSegmentList struct {
 }
 
 type BlockSegment struct {
-	Type     SegmentType
-	Prefix   string
-	Message  string
+	Type          SegmentType
+	Prefix        string
+	Message       string
 	AttributeList *AttributeList
-	SubNodes *NodeList
+	SubNodes      *NodeList
 }
 
 // Attributes
