@@ -72,7 +72,7 @@ func (g *Graphic) resizeTo(rows, cols int) {
 }
 
 // Remeasure the entire drawing.  Returns a rect containing the size of the image
-func (g *Graphic) remeasure() (int, int) {
+func (g *Graphic) remeasure() (width, height int) {
 	// Reinitializes the matrix
 	g.reinitMatrix()
 
@@ -95,7 +95,7 @@ func (g *Graphic) reinitMatrix() {
 	}
 }
 
-func (g *Graphic) repositionGridPoints() (int, int) {
+func (g *Graphic) repositionGridPoints() (w, h int) {
 	maxX := 0
 
 	py := g.Margin.Y
@@ -127,8 +127,8 @@ func (g *Graphic) repositionGridPoints() (int, int) {
 //
 // TODO: Instead of using loops, add cheats like only using
 // the first row/column
-func (g *Graphic) GridPointRect(fr, fc, tr, tc int) (int, int) {
-	w, h := 0, 0
+func (g *Graphic) GridPointRect(fr, fc, tr, tc int) (w, h int) {
+	w, h = 0, 0
 	for r := fr + 1; r <= tr; r++ {
 		h += g.matrix[r][0].Delta.Y
 	}

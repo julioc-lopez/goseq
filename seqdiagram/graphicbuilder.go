@@ -254,7 +254,7 @@ func getInnerRanksRecursive(subItems []SequenceItem) []int {
 	return ranks
 }
 
-func (gb *graphicBuilder) getStartAndEndColsBasedOnContent(subItems []SequenceItem) (int, int) {
+func (gb *graphicBuilder) getStartAndEndColsBasedOnContent(subItems []SequenceItem) (start, end int) {
 	startCol := 0
 	endCol := gb.Graphic.Cols() - 1 // This needs to be the column of the last actor
 
@@ -350,8 +350,8 @@ func (gb *graphicBuilder) putBlockSegmentsSequentially(row *int, depth int, acti
 }
 
 // Count the number of rows needed in the graphic
-func (gb *graphicBuilder) calcRowsAndCols() (int, int) {
-	cols := gb.determineActorInfo() + 1
+func (gb *graphicBuilder) calcRowsAndCols() (rows, cols int) {
+	cols = gb.determineActorInfo() + 1
 
 	// 1 for the title, object header and object footer
 	if len(gb.Diagram.Items) == 0 {

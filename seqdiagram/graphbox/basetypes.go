@@ -95,7 +95,7 @@ type Rect struct {
 }
 
 // Returns a point located at a specific gravity within the rectangle
-func (r Rect) PointAt(gravity Gravity) (int, int) {
+func (r Rect) PointAt(gravity Gravity) (x, y int) {
 	lx, ly := gravity(r.W, r.H)
 	return r.X + lx, r.Y + ly
 }

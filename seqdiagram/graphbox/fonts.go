@@ -81,7 +81,7 @@ func NewTTFFontFromByteSlice(b []byte, fontName string) (*TTFFont, error) {
 
 // Measures the size of a font
 // TODO: For long bits of text, the measurement can be slightly off
-func (ttf *TTFFont) Measure(txt string, size float64) (int, int) {
+func (ttf *TTFFont) Measure(txt string, size float64) (mx, my int) {
 	img := nopDrawImage(0)
 
 	ctx := freetype.NewContext()
@@ -95,9 +95,7 @@ func (ttf *TTFFont) Measure(txt string, size float64) (int, int) {
 
 	np, _ := ctx.DrawString(txt, freetype.Pt(0, 0))
 
-	mx, my := ttf.roundFix32(np.X), int(size)+ttf.roundFix32(np.Y)
-
-	return mx, my
+	return ttf.roundFix32(np.X), int(size) + ttf.roundFix32(np.Y)
 }
 
 // Round a 26.6 fixed number to the nearest integer.

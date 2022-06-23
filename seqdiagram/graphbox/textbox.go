@@ -45,7 +45,7 @@ func (tb *TextBox) AddText(text string) {
 }
 
 // Returns the width and height of the text box.
-func (tb *TextBox) Measure() (int, int) {
+func (tb *TextBox) Measure() (width, height int) {
 	w := 0
 	h := 0
 
@@ -59,7 +59,7 @@ func (tb *TextBox) Measure() (int, int) {
 }
 
 // Measures a line
-func (tb *TextBox) measureLine(line string) (int, int) {
+func (tb *TextBox) measureLine(line string) (width, height int) {
 	fs := float64(tb.FontSize)
 	return tb.Font.Measure(line, fs)
 }
