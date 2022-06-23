@@ -1,4 +1,4 @@
-//go:generate goyacc -o grammer.go grammer.y
+//go:generate goyacc -l -o grammer.go grammer.y
 //
 package parse
 
