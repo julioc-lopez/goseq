@@ -434,11 +434,9 @@ func (gb *graphicBuilder) addActors() {
 				if actor.InFooter {
 					gb.Graphic.Put(bottomRow, col, graphbox.NewActorBox(actor.Label, actorStyle, actorBoxPos|graphbox.BottomActorBox))
 				}
-			} else {
-				if actor.InFooter {
-					// Use the TopActorBox as that performs the layout
-					gb.Graphic.Put(bottomRow, col, graphbox.NewActorBox(actor.Label, actorStyle, actorBoxPos|graphbox.TopActorBox))
-				}
+			} else if actor.InFooter {
+				// Use the TopActorBox as that performs the layout
+				gb.Graphic.Put(bottomRow, col, graphbox.NewActorBox(actor.Label, actorStyle, actorBoxPos|graphbox.TopActorBox))
 			}
 		}
 	}
