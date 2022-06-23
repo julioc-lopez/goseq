@@ -234,20 +234,23 @@ func (gb *graphicBuilder) putBlockSegmentsConcurrently(row *int, depth int, acti
 }
 
 func getInnerRanksRecursive(subItems []SequenceItem) []int {
-	ranks := []int{}
+	var ranks []int
+
 	for _, subItem := range subItems {
-		if action, isAction := subItem.(*Action); isAction {
-			if action.From.rank == action.To.rank {
-				ranks = append(ranks, action.From.rank, action.To.rank+1)
+		switch s := subItem.(type) {
+		case *Action:
+			if s.From.rank == s.To.rank {
+				ranks = append(ranks, s.From.rank, s.To.rank+1)
 			} else {
-				ranks = append(ranks, action.From.rank, action.To.rank)
+				ranks = append(ranks, s.From.rank, s.To.rank)
 			}
-		} else if block, isBlock := subItem.(*Block); isBlock {
-			for _, segment := range block.Segments {
+		case *Block:
+			for _, segment := range s.Segments {
 				ranks = append(ranks, getInnerRanksRecursive(segment.SubItems)...)
 			}
 		}
 	}
+
 	return ranks
 }
 
