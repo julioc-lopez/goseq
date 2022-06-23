@@ -3,14 +3,13 @@ package main
 import (
 	"errors"
 	"io"
-	"io/ioutil"
 	"os"
 	"path/filepath"
 )
 
 func openSourceFile(filename string) (io.ReadCloser, error) {
 	if (filename == "") || (filename == "-") {
-		return ioutil.NopCloser(os.Stdin), nil
+		return io.NopCloser(os.Stdin), nil
 	}
 
 	return os.Open(filename)

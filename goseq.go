@@ -4,7 +4,6 @@ import (
 	"flag"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"log"
 	"os"
 	"path/filepath"
@@ -54,7 +53,7 @@ func processMdFile(inFilename string, outFilename string, renderer Renderer) err
 	}
 	defer srcFile.Close()
 
-	targetFile := ioutil.Discard
+	targetFile := io.Discard
 
 	mf := &MarkdownFilter{srcFile, targetFile, func(codeblock string, output io.Writer) error {
 		fmt.Fprint(output, codeblock)
