@@ -8,7 +8,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/ajstarks/svgo"
+	svg "github.com/ajstarks/svgo"
 )
 
 type GraphboxItem interface {

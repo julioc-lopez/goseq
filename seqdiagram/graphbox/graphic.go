@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/ajstarks/svgo"
+	svg "github.com/ajstarks/svgo"
 )
 
 // // Options for the SVG images
