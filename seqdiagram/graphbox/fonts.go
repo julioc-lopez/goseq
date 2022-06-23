@@ -30,8 +30,8 @@ type Font interface {
 // the text centered.  The point and gravity describes the location of the rect.
 // The second point is where the text is to start given that it is to be rendered to
 // fill the rectangle with default anchoring and alignment
-func MeasureFontRect(font Font, size int, text string, x, y int, gravity Gravity) (Rect, Point) {
-	w, h := font.Measure(text, float64(size))
+func MeasureFontRect(f Font, size int, text string, x, y int, gravity Gravity) (Rect, Point) {
+	w, h := f.Measure(text, float64(size))
 	ox, oy := gravity(w, h)
 	tp := Point{x - ox, y - oy + h}
 	// HACK: May now work in all cases.  Adjust for the hanging measurements
@@ -70,8 +70,8 @@ func NewTTFFontFromBuffer(fontBuffer *bytes.Buffer, name string) (*TTFFont, erro
 */
 
 // Loads a TTF font from a byte slice
-func NewTTFFontFromByteSlice(bytes []byte, fontName string) (*TTFFont, error) {
-	ttfFont, err := freetype.ParseFont(bytes)
+func NewTTFFontFromByteSlice(b []byte, fontName string) (*TTFFont, error) {
+	ttfFont, err := freetype.ParseFont(b)
 	if err != nil {
 		return nil, err
 	}

@@ -75,7 +75,7 @@ func (tb *TextBox) BoundingRect() Rect {
 }
 
 // Renders the text from the given point and gravity
-func (tb *TextBox) Render(svg *svg.SVG, x, y int, gravity Gravity) {
+func (tb *TextBox) Render(s *svg.SVG, x, y int, gravity Gravity) {
 	rect := tb.BoundingRect().PositionAt(x, y, gravity)
 	left := rect.X
 	currY := rect.Y
@@ -98,7 +98,7 @@ func (tb *TextBox) Render(svg *svg.SVG, x, y int, gravity Gravity) {
 		textBottom := currY + lineH - (tb.FontSize*1/4 - 1)
 
 		if line != "" {
-			svg.Text(textLeft, textBottom, line, style)
+			s.Text(textLeft, textBottom, line, style)
 		}
 
 		currY += lineH + LINE_GAP
