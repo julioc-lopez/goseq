@@ -124,15 +124,18 @@ type nopDrawImage int
 func (ndi nopDrawImage) ColorModel() color.Model {
 	return color.GrayModel
 }
+
 func (ndi nopDrawImage) Bounds() image.Rectangle {
 	return image.Rectangle{
 		Min: image.Point{int(math.MinInt32), int(math.MinInt32)},
 		Max: image.Point{int(math.MaxInt32), int(math.MaxInt32)},
 	}
 }
+
 func (ndi nopDrawImage) At(x, y int) color.Color {
 	return color.Black
 }
+
 func (ndi nopDrawImage) Set(x, y int, c color.Color) {
 	// Do nothing
 }

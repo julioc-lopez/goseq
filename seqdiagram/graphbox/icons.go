@@ -7,7 +7,6 @@ import (
 
 // An icon which can be added to actors
 type Icon interface {
-
 	// Return the size of the icon
 	Size() (width int, height int)
 

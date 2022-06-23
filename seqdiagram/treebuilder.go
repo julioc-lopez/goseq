@@ -67,7 +67,6 @@ func newTreeBuilder(nl *parse.NodeList, filename string) *treeBuilder {
 }
 
 func (tb *treeBuilder) buildTree(d *Diagram) error {
-
 	for nodeList := tb.nodeList; nodeList != nil; nodeList = nodeList.Tail {
 		seqItem, err := tb.toSequenceItem(nodeList.Head, d)
 		if err != nil {
