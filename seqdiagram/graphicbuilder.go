@@ -196,7 +196,7 @@ func (gb *graphicBuilder) putAction(row int, action *Action) {
 
 	style := gb.Style.ActivityLine
 
-	style.ArrowHead = gb.Style.ArrowHeads[action.Arrow.Head] //graphboxArrowHeadMapping[action.Arrow.Head]
+	style.ArrowHead = gb.Style.ArrowHeads[action.Arrow.Head] // graphboxArrowHeadMapping[action.Arrow.Head]
 	style.ArrowStem = graphboxArrowStemMapping[action.Arrow.Stem]
 
 	gb.Graphic.Put(row, fromCol, graphbox.NewActivityLine(toCol, fromCol == toCol, action.Message, style))

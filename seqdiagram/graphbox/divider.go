@@ -110,7 +110,7 @@ func (div *Divider) Draw(ctx DrawContext, point Point) {
 		case DSFullLine:
 			// Draw the rectangle for clearing the image
 			ctx.Canvas.Rect(borderRect.X, borderRect.Y, borderRect.W, borderRect.H, "fill:white;stroke:white;")
-			ctx.Canvas.Line(borderRect.X, centerY, borderRect.W, centerY, "fill:white;stroke:black;stroke-width:2px;") //stroke-dasharray:16,8")
+			ctx.Canvas.Line(borderRect.X, centerY, borderRect.W, centerY, "fill:white;stroke:black;stroke-width:2px;") // stroke-dasharray:16,8")
 
 			if div.hasText {
 				ctx.Canvas.Rect(textBoxRect.X, textBoxRect.Y, textBoxRect.W, textBoxRect.H, "fill:white;stroke:white;")
