@@ -71,13 +71,15 @@ func (dc *DrawContext) PointAt(r, c int) (Point, bool) {
 // An anchor point located in a rectangle at 0, 0 with the w, h passed in
 type Gravity func(w, h int) (int, int)
 
-var NorthWestGravity Gravity = func(w, h int) (int, int) { return 0, 0 }
-var NorthGravity Gravity = func(w, h int) (int, int) { return w / 2, 0 }
-var EastGravity Gravity = func(w, h int) (int, int) { return w, h / 2 }
-var WestGravity Gravity = func(w, h int) (int, int) { return 0, h / 2 }
-var CenterGravity Gravity = func(w, h int) (int, int) { return w / 2, h / 2 }
-var SouthGravity Gravity = func(w, h int) (int, int) { return w / 2, h }
-var SouthWestGravity Gravity = func(w, h int) (int, int) { return 0, h }
+var (
+	NorthWestGravity Gravity = func(w, h int) (int, int) { return 0, 0 }
+	NorthGravity     Gravity = func(w, h int) (int, int) { return w / 2, 0 }
+	EastGravity      Gravity = func(w, h int) (int, int) { return w, h / 2 }
+	WestGravity      Gravity = func(w, h int) (int, int) { return 0, h / 2 }
+	CenterGravity    Gravity = func(w, h int) (int, int) { return w / 2, h / 2 }
+	SouthGravity     Gravity = func(w, h int) (int, int) { return w / 2, h }
+	SouthWestGravity Gravity = func(w, h int) (int, int) { return 0, h }
+)
 
 // A specific gravity
 func AtSpecificGravity(fx, fy float64) Gravity {

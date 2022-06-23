@@ -18,13 +18,15 @@ type Icon interface {
 // A stick figure icon
 //
 
-const stickPersonIconHead = 10
-const stickPersonTorsoLength = 16
-const stickPersonLegLength = 18
-const stickPersonLegGap = 8
-const stickPersonSholders = 2
-const stickPersonArmLength = 12
-const stickPersonArmGap = 12
+const (
+	stickPersonIconHead    = 10
+	stickPersonTorsoLength = 16
+	stickPersonLegLength   = 18
+	stickPersonLegGap      = 8
+	stickPersonSholders    = 2
+	stickPersonArmLength   = 12
+	stickPersonArmGap      = 12
+)
 
 type StickPersonIcon int
 

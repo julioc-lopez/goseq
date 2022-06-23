@@ -144,7 +144,7 @@ func (al *ActivityLine) renderMessage(ctx DrawContext, tx, ty int, anchorLeft bo
 func (al *ActivityLine) drawArrow(ctx DrawContext, x, y int, isRight bool) {
 	headStyle := al.style.ArrowHead
 
-	var xs, ys = make([]int, len(headStyle.Xs)), make([]int, len(headStyle.Ys))
+	xs, ys := make([]int, len(headStyle.Xs)), make([]int, len(headStyle.Ys))
 	if len(xs) != len(ys) {
 		panic("length of xs and ys must be the same")
 	}
