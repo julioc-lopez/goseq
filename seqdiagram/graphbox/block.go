@@ -32,7 +32,7 @@ type Block struct {
 	messageTextBoxRect Rect
 }
 
-func NewBlock(toRow int, toCol int, marginMup int, isLast bool, prefix string, showPrefix bool, text string, style BlockStyle) *Block {
+func NewBlock(toRow, toCol, marginMup int, isLast bool, prefix string, showPrefix bool, text string, style BlockStyle) *Block {
 	prefixTextBox := NewTextBox(style.Font, style.FontSize, MiddleTextAlign)
 	prefixTextBox.AddText(prefix)
 	prefixTextBoxRect := prefixTextBox.BoundingRect()

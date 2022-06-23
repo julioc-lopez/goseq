@@ -280,7 +280,7 @@ func (as *AttributeSet) Get(name string) (value string, hasValue bool) {
 }
 
 // Get an attribute value or a default if it is not defined
-func (as *AttributeSet) GetDef(name string, def string) string {
+func (as *AttributeSet) GetDef(name, def string) string {
 	if value, hasValue := as.Get(name); hasValue {
 		return value
 	} else {

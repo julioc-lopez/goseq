@@ -1,6 +1,6 @@
 package seqdiagram
 
-func maxInt(x int, y int) int {
+func maxInt(x, y int) int {
 	if x > y {
 		return x
 	} else {

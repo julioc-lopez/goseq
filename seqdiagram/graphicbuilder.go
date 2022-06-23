@@ -163,7 +163,7 @@ func (gb *graphicBuilder) putSingleActorNote(row int, actor *Actor, note *Note) 
 
 // Places a note over a multiple actors.  This actually uses the divider graphics object
 // with the style adopted from the note style
-func (gb *graphicBuilder) putMultiActorOverNote(row int, leftActor *Actor, rightActor *Actor, note *Note) {
+func (gb *graphicBuilder) putMultiActorOverNote(row int, leftActor, rightActor *Actor, note *Note) {
 	dividerBox := graphbox.DividerStyle{
 		Font:        gb.Style.NoteBox.Font,
 		FontSize:    gb.Style.NoteBox.FontSize,

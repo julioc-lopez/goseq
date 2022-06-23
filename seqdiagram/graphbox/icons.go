@@ -29,13 +29,13 @@ const (
 
 type StickPersonIcon int
 
-func (spi StickPersonIcon) Size() (width int, height int) {
+func (spi StickPersonIcon) Size() (width, height int) {
 	width = maxInt(maxInt(stickPersonIconHead, stickPersonArmGap), stickPersonLegGap) * 2
 	height = stickPersonIconHead*2 + stickPersonTorsoLength + stickPersonLegLength
 	return
 }
 
-func (spi StickPersonIcon) Draw(ctx DrawContext, x int, y int, lineStyle *SvgStyle) {
+func (spi StickPersonIcon) Draw(ctx DrawContext, x, y int, lineStyle *SvgStyle) {
 	style := lineStyle.ToStyle()
 
 	_, h := spi.Size()
@@ -66,7 +66,7 @@ type CylinderIcon struct {
 	Horizontal         bool
 }
 
-func (ci CylinderIcon) Size() (width int, height int) {
+func (ci CylinderIcon) Size() (width, height int) {
 	if ci.Horizontal {
 		height = ci.EllipseLargeRadius * 2
 		width = ci.Length + ci.EllipseSmallRadius*3
@@ -77,7 +77,7 @@ func (ci CylinderIcon) Size() (width int, height int) {
 	return
 }
 
-func (ci CylinderIcon) Draw(ctx DrawContext, x int, y int, lineStyle *SvgStyle) {
+func (ci CylinderIcon) Draw(ctx DrawContext, x, y int, lineStyle *SvgStyle) {
 	style := lineStyle.ToStyle()
 
 	if ci.Horizontal {
@@ -87,7 +87,7 @@ func (ci CylinderIcon) Draw(ctx DrawContext, x int, y int, lineStyle *SvgStyle) 
 	}
 }
 
-func (ci CylinderIcon) drawHorizontalCylinder(ctx DrawContext, x int, y int, style string) {
+func (ci CylinderIcon) drawHorizontalCylinder(ctx DrawContext, x, y int, style string) {
 	topY, bottomY := y-ci.EllipseLargeRadius, y+ci.EllipseLargeRadius
 	leftX := x - ci.Length/2
 	rightX := x + ci.Length/2
@@ -101,7 +101,7 @@ func (ci CylinderIcon) drawHorizontalCylinder(ctx DrawContext, x int, y int, sty
 	ci.drawCurve(ctx, leftX, topY, leftX, bottomY, ci.EllipseSmallRadius, 0, style)
 }
 
-func (ci CylinderIcon) drawVerticalCylinder(ctx DrawContext, x int, y int, style string) {
+func (ci CylinderIcon) drawVerticalCylinder(ctx DrawContext, x, y int, style string) {
 	leftX, rightX := x-ci.EllipseLargeRadius, x+ci.EllipseLargeRadius
 	upperEllipseY := y - ci.Length/2
 	lowerEllipseY := y + ci.Length/2
@@ -131,13 +131,13 @@ type PathIcon struct {
 	Data PathIconData
 }
 
-func (pi PathIcon) Size() (width int, height int) {
+func (pi PathIcon) Size() (width, height int) {
 	width = int(pi.Data.TargetIconSize * pi.Data.Width / pi.Data.Height)
 	height = int(pi.Data.TargetIconSize)
 	return
 }
 
-func (pi PathIcon) Draw(ctx DrawContext, x int, y int, lineStyle *SvgStyle) {
+func (pi PathIcon) Draw(ctx DrawContext, x, y int, lineStyle *SvgStyle) {
 	scaleFactor := (pi.Data.TargetIconSize - pi.Data.IconPadding*2) / pi.Data.Width
 
 	style := lineStyle.ToStyle()

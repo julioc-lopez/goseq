@@ -46,7 +46,7 @@ func buildImageOptions() *seqdiagram.ImageOptions {
 }
 
 // Processes a md file
-func processMdFile(inFilename string, outFilename string, renderer Renderer) error {
+func processMdFile(inFilename, outFilename string, renderer Renderer) error {
 	srcFile, err := openSourceFile(inFilename)
 	if err != nil {
 		return err
@@ -67,7 +67,7 @@ func processMdFile(inFilename string, outFilename string, renderer Renderer) err
 }
 
 // Processes a seq file
-func processSeqFile(inFilename string, outFilename string, renderer Renderer) error {
+func processSeqFile(inFilename, outFilename string, renderer Renderer) error {
 	srcFile, err := openSourceFile(inFilename)
 	if err != nil {
 		return err
@@ -78,7 +78,7 @@ func processSeqFile(inFilename string, outFilename string, renderer Renderer) er
 }
 
 // Processes a sequence diagram
-func processSeqDiagram(infile io.Reader, inFilename string, outFilename string, renderer Renderer) error {
+func processSeqDiagram(infile io.Reader, inFilename, outFilename string, renderer Renderer) error {
 	diagram, err := seqdiagram.ParseDiagram(infile, inFilename)
 	if err != nil {
 		return err
@@ -111,7 +111,7 @@ func processSeqDiagram(infile io.Reader, inFilename string, outFilename string, 
 }
 
 // Processes a file.  This switches based on the file extension
-func processFile(inFilename string, outFilename string, renderer Renderer) error {
+func processFile(inFilename, outFilename string, renderer Renderer) error {
 	ext := filepath.Ext(inFilename)
 	if ext == ".md" {
 		return processMdFile(inFilename, outFilename, renderer)

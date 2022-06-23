@@ -45,7 +45,7 @@ func (d *Diagram) GetOrAddActor(name string) *Actor {
 	return d.GetOrAddActorWithOptions(name, name)
 }
 
-func (d *Diagram) GetOrAddActorWithOptions(name string, label string) *Actor {
+func (d *Diagram) GetOrAddActorWithOptions(name, label string) *Actor {
 	for _, a := range d.Actors {
 		if a.Name == name {
 			return a
