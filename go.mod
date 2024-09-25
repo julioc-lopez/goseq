@@ -1,6 +1,6 @@
 module github.com/lmika/goseq
 
-go 1.18
+go 1.23.1
 
 require (
 	github.com/ajstarks/svgo v0.0.0-20200725142600-7a3c8b57fecb
@@ -8,7 +8,7 @@ require (
 	github.com/howeyc/fsnotify v0.9.0
 	github.com/quirkey/magick v0.0.0-20140324185457-b37664054620
 	github.com/seanpont/assert v0.0.0-20141212164842-4b06649e62f7
-	golang.org/x/image v0.18.0
+	golang.org/x/image v0.20.0
 )
 
 require (
