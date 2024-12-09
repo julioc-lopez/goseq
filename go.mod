@@ -8,7 +8,7 @@ require (
 	github.com/howeyc/fsnotify v0.9.0
 	github.com/quirkey/magick v0.0.0-20140324185457-b37664054620
 	github.com/seanpont/assert v0.0.0-20141212164842-4b06649e62f7
-	golang.org/x/image v0.20.0
+	golang.org/x/image v0.23.0
 )
 
 require (
